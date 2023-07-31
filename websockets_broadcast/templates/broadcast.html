@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Broadcast Messages</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var webSocket = new WebSocket("ws://localhost:8888/web_socket_broadcast");
+            webSocket.onmessage = function(wsbroadcast) {
+                var li = document.createElement("li");
+                li.textContent = wsbroadcast.data;
+                document.querySelector("#messages").appendChild(li);
+            };
+        });
+    </script>
+</head>
+<body>
+    <h1>Broadcast Messages</h1>
+    <section>
+        <h2>Messages received:</h2>
+        <ul id="messages"></ul>
+</body>
+</html>
